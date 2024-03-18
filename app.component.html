@@ -1,0 +1,86 @@
+<h2>Two-way data binding in Angular 17</h2>
+<!-- <input
+  type="text"
+  [value]="_message"
+  #txtdata
+  (keyup)="onChangeData(txtdata.value)"
+/> -->
+<input type="text" [(ngModel)]="_message" />
+<br />
+your message: <b>{{ _message }}</b>
+<h2>Pipes in Angular 17</h2>
+<h3>{{ pipedata }}</h3>
+<!--without pipe-->
+<h3>{{ pipedata | lowercase }}</h3>
+<h3>{{ pipedata | uppercase }}</h3>
+<h3>{{ pipedata | titlecase }}</h3>
+<h3>{{ pipedata | slice : 2 : 10 }}</h3>
+<h3>{{ company | json }}</h3>
+
+<table border="1">
+  <tr>
+    <th>Name</th>
+    <th>Age</th>
+  </tr>
+  @for(student of students;track student.name){
+  <tr>
+    <td>{{ student.name | uppercase }}</td>
+    <td>{{ student.age }}</td>
+  </tr>
+  }
+</table>
+
+<!--decimal pipe-->
+
+<h3>{{ 12.653618277637 | number }}</h3>
+<h3>{{ 12.653618277637 | number : "2.3-5" }}</h3>
+<h3>{{ 12.653618277637 | number : "3.2-5" }}</h3>
+<h3>{{ num | number : "1.3-5" }}</h3>
+
+<!--percent pipe-->
+<h3>{{ num | percent }}</h3>
+<h3>{{ num | percent : "2.3-5" }}</h3>
+
+<!--currency pipe-->
+<h3>{{ curr | currency }}</h3>
+<h3>{{ curr | currency : "INR" }}</h3>
+<h3>{{ curr | currency : "GBP" : true : "2.3-5" }}</h3>
+<h3>{{ curr | currency : "INR" : false }}</h3>
+
+<!--date pipe-->
+<h3>{{ curDate }}</h3>
+<h3>{{ curDate | date }}</h3>
+<h3>{{ curDate | date : "shortDate" }}</h3>
+<h3>{{ curDate | date : "longDate" }}</h3>
+<h3>{{ curDate | date : "fullDate" }}</h3>
+<h3>{{ curDate | date : "dd-mm-yyyy" }}</h3>
+<h3>{{ curDate | date : "dd/mm/yyyy" }}</h3>
+
+<!--chaining pipe-->
+<h3>{{ curDate | date : "fullDate" | uppercase }}</h3>
+
+<!-- custom pipe -->
+<h3>{{ customPipeDemo | welcome }}</h3>
+
+<h2>service in Angular 17</h2>
+<button (click)="getmessage()">Get</button>
+Your Info: <b>{{ _message }}</b>
+<h1>Component Service in Angular 17</h1>
+
+<app-comp1></app-comp1>
+<app-comp2></app-comp2>
+
+<div style="text-align: center">
+  <div>
+    <a routerLink="home" routerLinkActive="active">Home</a> |
+    <a routerLink="about" routerLinkActive="active">About</a> |
+    <a routerLink="contact" routerLinkActive="active">Contact</a> |
+    <!-- <a [routerLink]="[{ outlets: { outlet2: ['aboutusnew'] } }]"
+      >About Us New</a -->
+    <a routerLink="login" routerLinkActive="active">Login</a>
+  </div>
+  <router-outlet></router-outlet>
+  <!-- <div style="background-color: aquamarine">
+    <router-outlet name="outlet2"></router-outlet>
+  </div> -->
+</div>
